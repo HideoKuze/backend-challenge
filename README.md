@@ -2,7 +2,9 @@
 I originally thought we need to create some UI for input, but we didn't so I tried to scale back Django a bit lol
 
 This is running with Python 2.7.12
-Running on http://127.0.0.1:8000/
+Running on http://127.0.0.1:8000/ 
+
+Because there's views involved you can open the localhost in the browser and check the output
 
 Clone repo 
 run pip install -r requirements.txt
