@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from .models import InputInfo
 from forms import InputInfoForm
+from collections import OrderedDict
 import json
 from django.shortcuts import render
 
@@ -16,12 +17,13 @@ def conversationview(request, convo_identification):
 	for i in data:
 		if i.conversation_id == conversation_identification:
 			header['conversation_id'] = i.conversation_id
-			entry = {}
+			#OrderedDict preserves the order of the dict
+			entry = OrderedDict({})
 			entry['sender'] = i.name
 			entry['date_created'] = str(i.created)
-			entry['message_body'] = i.message_body
+			entry['message_body'] = i.message_body	
 			header.get('messages').append(entry)
-			output = json.dumps(header, indent=4)
+			output = json.dumps(header, sort_keys=False, indent=4)
 
 	#if the conversation does not exist return a 404 error
 	if InputInfo.objects.filter(conversation_id=convo_identification).exists() == False:
