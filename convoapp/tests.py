@@ -5,7 +5,7 @@ from convoapp.models import InputInfo
 from django.urls import reverse
 import sqlite3
 
-
+#tests can be run with 'python manage.py test convoapp.tests'
 class InputInfoTestCase(TestCase):	
 
 	def setUp(self):
