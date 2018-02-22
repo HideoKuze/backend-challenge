@@ -17,9 +17,9 @@ def conversationview(request, convo_identification):
 		if i.conversation_id == conversation_identification:
 			header['conversation_id'] = i.conversation_id
 			entry = {}
-			entry['message_body'] = i.message_body
+			entry['sender'] = i.name
 			entry['date_created'] = str(i.created)
-			entry['sender'] = i.name	
+			entry['message_body'] = i.message_body
 			header.get('messages').append(entry)
 			output = json.dumps(header, indent=4)
 
